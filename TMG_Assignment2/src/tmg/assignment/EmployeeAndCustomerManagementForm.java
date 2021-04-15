@@ -5,6 +5,9 @@
  */
 package tmg.assignment;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -18,18 +21,28 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
     ArrayList<Customer> customers = new ArrayList<Customer>();
     ArrayList<Employee> employees = new ArrayList<Employee>();
 
-
     /**
      * Creates new form EmployeeAndCustomerManagementForm
      */
-    public EmployeeAndCustomerManagementForm() {
+    public EmployeeAndCustomerManagementForm() throws ParseException {
         initComponents();
         isCustomerVisible(false);
         isEmployeeVisible(false);
         isEmployeeSaveVisible(false);
         isCustomerSaveVisible(false);
+        
+        customers.add(new Customer(20, "1", new SimpleDateFormat("dd/MM/yyyy").parse("22/03/2021"), 1, "Jackson", new SimpleDateFormat("dd/MM/yyyy").parse("06/02/2001"), "12 Troon Place", "02108226376", 'M'));
+        customers.add(new Customer(19, "1", new SimpleDateFormat("dd/MM/yyyy").parse("22/03/2021"), 2, "Steve", new SimpleDateFormat("dd/MM/yyyy").parse("06/02/2001"), "80 Queen STreet", "02124987612", 'M'));
+        
+        //Employee em = new Employee("MAC", "2", 1, "Mitch", "06/02/2001", "12 Troon Place", "02108226376", 'M');
+        //Customer cu = ;
+//        Customer cu = new Customer(0, licenseNumber, date, 0, name, date, address, phone, 0)
     }
 
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,28 +55,6 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        empSearchButton = new javax.swing.JButton();
-        searchEmpIDTextField = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        empNameTextField = new javax.swing.JLabel();
-        resultsEmpNameTextField = new javax.swing.JTextField();
-        resultsEmpDOBTextField = new javax.swing.JTextField();
-        empDOBTextField = new javax.swing.JLabel();
-        empAddressTextField = new javax.swing.JLabel();
-        resultsEmpAddressTextField = new javax.swing.JTextField();
-        resultsEmpPhoneTextField = new javax.swing.JTextField();
-        empPhoneTextField = new javax.swing.JLabel();
-        empPhoneExtensionTextField = new javax.swing.JLabel();
-        resultsEmpPhoneExtensionTextField = new javax.swing.JTextField();
-        resultsEmpUsernameTextField = new javax.swing.JTextField();
-        empUsernameTextField = new javax.swing.JLabel();
-        empGenderTextField = new javax.swing.JLabel();
-        resultsEmpGenderComboBox = new javax.swing.JComboBox<>();
-        empSearchResultsTextField = new javax.swing.JLabel();
-        updateEmployeeButton = new javax.swing.JButton();
-        saveEmployeeUpdateButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         cuNameTextField = new javax.swing.JLabel();
@@ -89,6 +80,28 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
         cuGenderTextField = new javax.swing.JLabel();
         updateCustomerButton = new javax.swing.JButton();
         saveCustomerUpdateButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        empSearchButton = new javax.swing.JButton();
+        searchEmpIDTextField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        empNameTextField = new javax.swing.JLabel();
+        resultsEmpNameTextField = new javax.swing.JTextField();
+        resultsEmpDOBTextField = new javax.swing.JTextField();
+        empDOBTextField = new javax.swing.JLabel();
+        empAddressTextField = new javax.swing.JLabel();
+        resultsEmpAddressTextField = new javax.swing.JTextField();
+        resultsEmpPhoneTextField = new javax.swing.JTextField();
+        empPhoneTextField = new javax.swing.JLabel();
+        empPhoneExtensionTextField = new javax.swing.JLabel();
+        resultsEmpPhoneExtensionTextField = new javax.swing.JTextField();
+        resultsEmpUsernameTextField = new javax.swing.JTextField();
+        empUsernameTextField = new javax.swing.JLabel();
+        empGenderTextField = new javax.swing.JLabel();
+        resultsEmpGenderComboBox = new javax.swing.JComboBox<>();
+        empSearchResultsTextField = new javax.swing.JLabel();
+        updateEmployeeButton = new javax.swing.JButton();
+        saveEmployeeUpdateButton = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
@@ -130,23 +143,210 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         addCuAgeTextField = new javax.swing.JTextField();
         addNewCuButton = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        inputStartRentalDate = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        inputEndRentalDate = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        rentalDisplayTable = new javax.swing.JTable();
-        searchRentalButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
         jLabel1.setText("Employee and Customer Management");
 
         jTabbedPane1.setBackground(new java.awt.Color(204, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+
+        jButton1.setForeground(new java.awt.Color(255, 0, 51));
+        jButton1.setText("Search");
+
+        cuNameTextField.setText("Name:");
+
+        cuDOBTextField.setText("Date of Birth:");
+
+        cuAddressTextField.setText("Address:");
+
+        cuPhoneTextField.setText("Phone Number:");
+
+        cuLicenseNumberTextField.setText("License Number:");
+
+        cuLicenseExpiryTextField.setText("License Expiry:");
+
+        cuAgeTextField.setText("Age:");
+
+        resultsCuGenderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+        resultsCuGenderComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resultsCuGenderComboBoxActionPerformed(evt);
+            }
+        });
+
+        resultsCuLicenseExpiryTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resultsCuLicenseExpiryTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel23.setText("Search/Update Customer");
+
+        jLabel24.setText("Search by ID:");
+
+        searchCuIDButton.setText("Search");
+        searchCuIDButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCuIDButtonActionPerformed(evt);
+            }
+        });
+
+        cuSearchResultsTextField.setForeground(new java.awt.Color(255, 0, 51));
+        cuSearchResultsTextField.setText("Search Results");
+
+        resultsCuAgeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resultsCuAgeTextFieldActionPerformed(evt);
+            }
+        });
+
+        cuGenderTextField.setText("Gender:");
+
+        updateCustomerButton.setText("Update");
+        updateCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCustomerButtonActionPerformed(evt);
+            }
+        });
+
+        saveCustomerUpdateButton.setText("Save");
+        saveCustomerUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveCustomerUpdateButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel23)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(106, 106, 106)
+                                        .addComponent(cuSearchResultsTextField)))
+                                .addGap(397, 397, 397))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel24)
+                                .addGap(18, 18, 18)
+                                .addComponent(SearchCuIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(searchCuIDButton)
+                                .addGap(269, 269, 269)))
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cuDOBTextField)
+                                        .addGap(65, 65, 65))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cuNameTextField)
+                                            .addComponent(cuLicenseNumberTextField))
+                                        .addGap(51, 51, 51)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(resultsCuNameTextField))
+                                    .addComponent(resultsCuDOBTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                    .addComponent(resultsCuLicenseNumberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cuLicenseExpiryTextField)
+                                    .addComponent(cuAgeTextField)
+                                    .addComponent(cuGenderTextField))
+                                .addGap(58, 58, 58)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(updateCustomerButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(saveCustomerUpdateButton))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(resultsCuGenderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 6, Short.MAX_VALUE))
+                                    .addComponent(resultsCuAgeTextField)
+                                    .addComponent(resultsCuLicenseExpiryTextField)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cuPhoneTextField)
+                                    .addComponent(cuAddressTextField))
+                                .addGap(56, 56, 56)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(resultsCuAddressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                    .addComponent(resultsCuPhoneTextField))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(SearchCuIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchCuIDButton))))
+                .addGap(18, 18, 18)
+                .addComponent(cuSearchResultsTextField)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuNameTextField)
+                    .addComponent(resultsCuNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuDOBTextField)
+                    .addComponent(resultsCuDOBTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuPhoneTextField)
+                    .addComponent(resultsCuPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuAddressTextField)
+                    .addComponent(resultsCuAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuLicenseNumberTextField)
+                    .addComponent(resultsCuLicenseNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resultsCuLicenseExpiryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cuLicenseExpiryTextField))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cuAgeTextField)
+                    .addComponent(resultsCuAgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resultsCuGenderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cuGenderTextField))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateCustomerButton)
+                    .addComponent(saveCustomerUpdateButton))
+                .addContainerGap(109, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Search/Update Customers", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,7 +442,7 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
                                 .addComponent(empSearchResultsTextField)))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,200 +487,10 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateEmployeeButton)
                     .addComponent(saveEmployeeUpdateButton))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Search/Update Employees", jPanel2);
-
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
-
-        jButton1.setForeground(new java.awt.Color(255, 0, 51));
-        jButton1.setText("Search");
-
-        cuNameTextField.setText("Name:");
-
-        cuDOBTextField.setText("Date of Birth:");
-
-        cuAddressTextField.setText("Address:");
-
-        cuPhoneTextField.setText("Phone Number:");
-
-        cuLicenseNumberTextField.setText("License Number:");
-
-        cuLicenseExpiryTextField.setText("License Expiry:");
-
-        cuAgeTextField.setText("Age:");
-
-        resultsCuGenderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
-        resultsCuGenderComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resultsCuGenderComboBoxActionPerformed(evt);
-            }
-        });
-
-        resultsCuLicenseExpiryTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resultsCuLicenseExpiryTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel23.setText("Search/Update Customer");
-
-        jLabel24.setText("Search by ID:");
-
-        searchCuIDButton.setText("Search");
-        searchCuIDButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchCuIDButtonActionPerformed(evt);
-            }
-        });
-
-        cuSearchResultsTextField.setForeground(new java.awt.Color(255, 0, 51));
-        cuSearchResultsTextField.setText("Search Results");
-
-        resultsCuAgeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resultsCuAgeTextFieldActionPerformed(evt);
-            }
-        });
-
-        cuGenderTextField.setText("Gender:");
-
-        updateCustomerButton.setText("Update");
-        updateCustomerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateCustomerButtonActionPerformed(evt);
-            }
-        });
-
-        saveCustomerUpdateButton.setText("Save");
-        saveCustomerUpdateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveCustomerUpdateButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(cuSearchResultsTextField))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel24)
-                                .addGap(18, 18, 18)
-                                .addComponent(SearchCuIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(searchCuIDButton)))
-                        .addGap(397, 397, 397)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(cuDOBTextField)
-                                            .addGap(65, 65, 65))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(cuNameTextField)
-                                                .addComponent(cuLicenseNumberTextField))
-                                            .addGap(51, 51, 51)))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(1, 1, 1)
-                                            .addComponent(resultsCuNameTextField))
-                                        .addComponent(resultsCuDOBTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                        .addComponent(resultsCuLicenseNumberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cuLicenseExpiryTextField)
-                                        .addComponent(cuAgeTextField)
-                                        .addComponent(cuGenderTextField))
-                                    .addGap(58, 58, 58)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(updateCustomerButton)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(saveCustomerUpdateButton))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(resultsCuGenderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addComponent(resultsCuAgeTextField)
-                                        .addComponent(resultsCuLicenseExpiryTextField)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cuPhoneTextField)
-                                        .addComponent(cuAddressTextField))
-                                    .addGap(56, 56, 56)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(resultsCuAddressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                        .addComponent(resultsCuPhoneTextField))))
-                            .addComponent(jLabel23))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel24)
-                    .addComponent(SearchCuIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchCuIDButton))
-                .addGap(18, 18, 18)
-                .addComponent(cuSearchResultsTextField)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cuNameTextField)
-                    .addComponent(resultsCuNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cuDOBTextField)
-                    .addComponent(resultsCuDOBTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cuPhoneTextField)
-                    .addComponent(resultsCuPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cuAddressTextField)
-                    .addComponent(resultsCuAddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cuLicenseNumberTextField)
-                    .addComponent(resultsCuLicenseNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resultsCuLicenseExpiryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cuLicenseExpiryTextField))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cuAgeTextField)
-                    .addComponent(resultsCuAgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resultsCuGenderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cuGenderTextField))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateCustomerButton)
-                    .addComponent(saveCustomerUpdateButton))
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Search/Update Customers", jPanel1);
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -539,23 +549,18 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
                             .addComponent(jLabel41)
                             .addComponent(jLabel42)
                             .addComponent(jLabel43))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(addNewEmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(addEmNameTextField)
-                                    .addComponent(addEmIDTextField)
-                                    .addComponent(addEmAddressTextField)
-                                    .addComponent(addEmPhoneTextField)
-                                    .addComponent(addEmPhoneExtensionTextField)
-                                    .addComponent(addEmUsernameTextField)
-                                    .addComponent(addEmGenderComboBox, 0, 190, Short.MAX_VALUE)
-                                    .addComponent(addEmDOBDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(21, 21, 21)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addNewEmButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addEmNameTextField)
+                            .addComponent(addEmIDTextField)
+                            .addComponent(addEmAddressTextField)
+                            .addComponent(addEmPhoneTextField)
+                            .addComponent(addEmPhoneExtensionTextField)
+                            .addComponent(addEmUsernameTextField)
+                            .addComponent(addEmGenderComboBox, 0, 190, Short.MAX_VALUE)
+                            .addComponent(addEmDOBDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -596,7 +601,7 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
                     .addComponent(addEmDOBDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(addNewEmButton)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Add Employee", jPanel4);
@@ -677,7 +682,7 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
                             .addComponent(addCuDOBDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(addCuLicenseExpiryDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                             .addComponent(addCuAgeTextField))
-                        .addGap(0, 28, Short.MAX_VALUE)))
+                        .addGap(0, 115, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -722,139 +727,36 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
                     .addComponent(jLabel32))
                 .addGap(29, 29, 29)
                 .addComponent(addNewCuButton)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Add Customer", jPanel3);
-
-        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
-
-        jLabel3.setText("Start Date:");
-
-        jLabel2.setFont(new java.awt.Font("Sitka Text", 1, 24)); // NOI18N
-        jLabel2.setText("Dates to view rentals between:");
-
-        jLabel4.setText("End Date:");
-
-        inputEndRentalDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputEndRentalDateActionPerformed(evt);
-            }
-        });
-
-        rentalDisplayTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Name", "Address", "Phone", "Gender", "Date Rented", "Return Date"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(rentalDisplayTable);
-
-        searchRentalButton.setText("Search");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputStartRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(inputEndRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(searchRentalButton))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel2)))
-                .addContainerGap(47, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputStartRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputEndRentalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(searchRentalButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(283, 283, 283))
+                .addGap(463, 463, 463)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTabbedPane2)
-                        .addComponent(jTabbedPane1))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(394, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTabbedPane2)
+                    .addComponent(jTabbedPane1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1166,44 +1068,40 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
         searchEmpIDTextField.setText("");
     }//GEN-LAST:event_saveEmployeeUpdateButtonActionPerformed
 
-    private void inputEndRentalDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEndRentalDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputEndRentalDateActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeeAndCustomerManagementForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeeAndCustomerManagementForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeeAndCustomerManagementForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmployeeAndCustomerManagementForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EmployeeAndCustomerManagementForm().setVisible(true);
-            }
-        });
-    }
+//    /**V
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(EmployeeAndCustomerManagementForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(EmployeeAndCustomerManagementForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(EmployeeAndCustomerManagementForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(EmployeeAndCustomerManagementForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new EmployeeAndCustomerManagementForm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SearchCuIDTextField;
@@ -1245,20 +1143,16 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
     private javax.swing.JButton empSearchButton;
     private javax.swing.JLabel empSearchResultsTextField;
     private javax.swing.JLabel empUsernameTextField;
-    private javax.swing.JTextField inputEndRentalDate;
-    private javax.swing.JTextField inputStartRentalDate;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1269,7 +1163,6 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -1279,11 +1172,8 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable rentalDisplayTable;
     private javax.swing.JTextField resultsCuAddressTextField;
     private javax.swing.JTextField resultsCuAgeTextField;
     private javax.swing.JTextField resultsCuDOBTextField;
@@ -1303,7 +1193,6 @@ public class EmployeeAndCustomerManagementForm extends javax.swing.JFrame {
     private javax.swing.JButton saveEmployeeUpdateButton;
     private javax.swing.JButton searchCuIDButton;
     private javax.swing.JTextField searchEmpIDTextField;
-    private javax.swing.JButton searchRentalButton;
     private javax.swing.JButton updateCustomerButton;
     private javax.swing.JButton updateEmployeeButton;
     // End of variables declaration//GEN-END:variables

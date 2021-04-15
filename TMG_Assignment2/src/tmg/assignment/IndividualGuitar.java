@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TMG.Assignment2;
+package tmg.assignment;
 
 import java.time.LocalDate;
 
@@ -13,7 +13,7 @@ import java.time.LocalDate;
  *
  * @author thomaskerr-smith
  */
-public class IndividualGuitar
+public abstract class IndividualGuitar
 {
     double guitarSerialNumber;
     int guitarYear;
